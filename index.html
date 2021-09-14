@@ -14,7 +14,7 @@
 
   <!-- custom css -->
   <link rel="stylesheet" href="css/style.css" />
-  
+
 
   <!-- google Montserrat  font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,8 +48,18 @@
     </nav>
   </header>
 
-  <!-- product and my-cart section -->
+
   <main class="main container">
+
+    <!-- details section modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div id="modal-container" class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        
+      </div>
+    </div>
+
+    <!-- product and cart section -->
     <div class="row">
       <!-- product section -->
       <div class="col-lg-9 col-sm-7 p-0">
@@ -66,8 +76,6 @@
               <tr>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <!-- <th scope="col"></th>
-                <th scope="col"></th> -->
               </tr>
             </thead>
             <tbody>
@@ -75,31 +83,22 @@
                 <th>Total Added-Products:</th>
                 <!-- here, $ symbol from total Added-Products removed -->
                 <td><span id="total-Products">0</span></td>
-                <!-- <td></td>
-                <td></td> -->
               </tr>
               <tr>
                 <th>Price:</th>
                 <td>$ <span id="price">0</span></td>
-                <!-- <td></td>
-                <td></td> -->
               </tr>
               <tr>
                 <th>Delivery-Charge:</th>
                 <td>$ <span id="delivery-charge">20.00</span></td>
-                <!-- <td></td>
-                <td></td> -->
               </tr>
               <tr>
                 <th>Total-Tax:</th>
                 <td>$ <span id="total-tax">0</span></td>
-                <!-- <td></td>
-                <td></td> -->
               </tr>
               <tr>
                 <th scope="row">Total</th>
                 <td colspan="2">$ <span id="total">0</span></td>
-                <!-- <td></td> -->
               </tr>
             </tbody>
           </table>

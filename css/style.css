@@ -45,3 +45,7 @@ body {
 .cart:hover {
   box-shadow: 1px 1px 20px gray;
 }
+
+.modal-pic {
+  border-radius: 10px;
+}

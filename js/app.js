@@ -23,7 +23,7 @@ const showProducts = (products) => {
         </div>
         <div class="card-footer card-footer-bg text-end px-2 py-3">
           <button onclick="addToCart(${pd.id},${pd.price})" id="addToCart-btn" class="buy-now btn btn-danger me-2"><i class="fas fa-shopping-cart"></i> Add to cart</button>
-          <button id="details-btn" class="btn btn-dark opacity-75">Details</button>
+          <button onclick="loadDetails(${pd.id})" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-dark opacity-75">Details</button>
         </div>
       </div>
     </div>
@@ -36,6 +36,51 @@ const showProducts = (products) => {
   // }   //here, extra for of loop is unusual I think. So, I am used map for showing data.
 
 };
+
+//details functionality
+const loadDetails = (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => showDetails(data))
+}
+
+// show product details in modal details section
+const showDetails = (product) => {
+  console.log(product);
+  const modalBox = document.getElementById('modal-container');
+  modalBox.textContent = '';
+  const div = document.createElement('div');
+  div.classList.add('modal-content', 'card-bg', 'text-dark');
+  div.innerHTML = `
+    <div class="modal-header border-dark">
+      <h4 class="modal-title" id="staticBackdropLabel">${product.title}</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body p-5">
+      <div class="card border-0 text-black mb-3 w-100">
+        <div class="row g-0">
+          <div class="col-md-5 border border-3 border-dark modal-pic">
+            <img src="${product.image}" class="img-fluid rounded-start h-100 p-4" alt="...">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body h-100 card-bg">
+              <h4>Description:</h4>
+              <p class="card-text">${product.description}</p>
+              <p class="mt-3 text-muted card-text">Category: <span class="text-success"><b>${product.category}</b></span></p>
+              <p class="mt-4 card-text"><span class="rating-bg"><i class="fas fa-star"></i> <b>${product.rating.rate}</b></span> average ratings based on <br><span class="rating-bg"><i class="fas fa-user"></i> <b>${product.rating.count}</b></span> users reviews</p>
+              <h3 class="mt-2 card-text">Price: <span class="text-danger">$${product.price}</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer border-dark">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+    </div>
+  `;
+  modalBox.appendChild(div);
+}
 
 
 let count = 0;
